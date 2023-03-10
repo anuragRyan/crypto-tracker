@@ -1,8 +1,8 @@
 {
   "name": "crypto_dashboard",
   "version": "0.1.0",
-  "private": true,
-  "homepage": "https://anuragRyan.github.io/crypto_tracker",
+  "private": false,
+  "homepage": "https://anuragRyan.github.io/crypto-tracker",
   "dependencies": {
     "@testing-library/jest-dom": "^5.16.4",
     "@testing-library/react": "^13.1.1",

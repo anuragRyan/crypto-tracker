@@ -10,6 +10,17 @@ export class ChartSection extends Component {
         options: {
           chart: {
             id: "area-datetime",
+            toolbar: {
+              show: true,
+              offsetX: 0,
+              offsetY: 0,
+              tools: {
+                download: false,
+                selection: false,
+                pan: false,
+                zoom: false,
+              },
+            },
           },
           grid: {
             show: false,
@@ -32,7 +43,10 @@ export class ChartSection extends Component {
             enabled: false,
           },
           yaxis: {
-            show: false,
+            show: true,
+            labels:{
+              formatter: (value) => {return value.toFixed(0)}
+            },
           },
           colors: ["#fcdf03"],
           tooltip: {
@@ -60,6 +74,19 @@ export class ChartSection extends Component {
       },
       Market_Cap: {
         options: {
+          chart: {
+            toolbar: {
+              show: true,
+              offsetX: 0,
+              offsetY: 0,
+              tools: {
+                download: false,
+                selection: false,
+                pan: false,
+                zoom: false,
+              },
+            },
+          },
           grid: {
             show: false,
           },
@@ -108,6 +135,19 @@ export class ChartSection extends Component {
       },
       Total_Volume: {
         options: {
+          chart: {
+            toolbar: {
+              show: true,
+              offsetX: 0,
+              offsetY: 0,
+              tools: {
+                download: false,
+                selection: false,
+                pan: false,
+                zoom: false,
+              },
+            },
+          },
           grid: {
             show: false,
           },
@@ -158,15 +198,20 @@ export class ChartSection extends Component {
     this.prevSelection = this.state.Price.options.selection;
   }
   prevId = this.props.id;
-
+  
   fetchData = async () => {
-    let chartData = await fetch(
+    let jsonData;
+    try {
+      let chartData = await fetch(
       "https://api.coingecko.com/api/v3/coins/" +
         this.props.id +
         "/market_chart?vs_currency=inr&days=" +
         this.state.Price.options.selection
     );
-    let jsonData = await chartData.json();
+      jsonData = await chartData.json();
+    } catch (error) {
+      console.log(error);
+    }
     this.setState({
       Price: {
         options: this.state.Price.options,
@@ -188,8 +233,12 @@ export class ChartSection extends Component {
   };
 
   componentDidMount() {
-    this.fetchData();
-    this.interval = setInterval(() => this.fetchData(), 2000);
+    try {
+      this.fetchData();
+      this.interval = setInterval(() => this.fetchData(), 2000);
+    } catch (error) {
+      console.log(error);
+    }
   }
 
   componentWillUnmount() {
@@ -209,10 +258,10 @@ export class ChartSection extends Component {
 
   render() {
     return (
-      <div>
+      <div> 
         <div className="container">
           <div className="row">
-            <div className="col" style={{ maxWidth: "600px" }}>
+            <div className="col" style={{ maxWidth: "700px" }}>
               <div id="chart">
                 <div className="toolbar">
                   <button
@@ -290,7 +339,7 @@ export class ChartSection extends Component {
                   series={this.state.Price.series}
                   type="bar"
                   height="500"
-                  width="600"
+                  width="650"
                 />
               </div>
             </div>

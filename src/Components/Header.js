@@ -8,8 +8,8 @@ export class Header extends Component {
           <div className='container-fluid'>
 
             <select className='form-select form-select-lg' aria-label='.form-select-lg example' name='selectCoin'
-              style={{width: 'fit-content'}} onChange={this.props.handleSubmit}>
-              <option value='bitcoin'>Select Coin</option>
+              style={{width: 'fit-content'}} onChange={this.props.handleSubmit} defaultValue='bitcoin'>
+              <option value='bitcoin' disabled ={true}>Select Coin</option>
               <option value='avalanche-2'>Avalanche (AVAX)</option>
               <option value='binancecoin'>Binance (BNB)</option>
               <option value='bitcoin'>Bitcoin (BTC)</option>
@@ -23,7 +23,7 @@ export class Header extends Component {
             </select>
 
             <a className='navbar-brand d-flex ml-auto display-2 text-dark fs-2 fw-bold text-uppercase '
-              style={{fontFamily: 'NHaasGroteskDSPro-65Md'}} href='/'>
+              style={{fontFamily: 'NHaasGroteskDSPro-65Md', color:'white'}} href='/'>
               Crypto Dashboard
             </a>
 

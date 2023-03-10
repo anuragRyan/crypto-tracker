@@ -48,6 +48,7 @@ export default class App extends Component {
           totalVol = {this.state.data.market_data ? this.state.data.market_data.total_volume.inr : ""}
           circulating = {this.state.data.market_data ? this.state.data.market_data["circulating_supply"] : ""}
           priceChange24h = {this.state.data.market_data ? this.state.data.market_data.price_change_24h_in_currency.inr.toFixed(2) : ""}/>
+          
       </div>
     )
   }

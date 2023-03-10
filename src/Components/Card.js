@@ -8,7 +8,7 @@ export class Card extends Component {
           style={{fontFamily: 'NHaasGroteskDSPro-65Md', marginTop: '3px !important', marginBottom: '0px !important'}}>
             {this.props.coinName}
           </div>
-          <section className='row m-1 mb-0' style={{marginTop: '0px !important', marginLeft: '0px'}}>
+          <section className='row m-1 mb-0 justify-content-evenly' style={{marginTop: '0px !important'}}>
             <div className='card text-white text-center  m-3'
               style={{width: '11rem', backgroundColor: "rgb(43, 43, 43)", marginTop: '0px !important'}}>
                 <div className='card-body'>
